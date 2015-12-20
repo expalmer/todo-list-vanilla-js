@@ -54,13 +54,13 @@ a {
 .col-1-2 {
   float: left;
   padding: 10px;
-  width: 50%;
+  width: 40%;
 }
 
 .col-1-4 {
   float: left;
   padding: 10px;
-  width: 25%;
+  width: 30%;
 }
 
 .insert {
@@ -148,6 +148,7 @@ a {
 }
 
 .button--clear {
+  float: right;
   color: #fff;
   background: #EE1630;
   border: solid 1px #EE1630;
