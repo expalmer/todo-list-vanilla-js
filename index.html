@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Todo List</h1>
+  <div class="row limiter">
+    <div class="row insert">
+      <input type="checkbox" id="js-toggle-all" class="toggle">
+      <input type="text" id="js-insert" placeholder="What needs to be done ?">
+    </div>
+    <div class="row bar" id="js-bar">
+      <div class="col-1-4">
+        <span class="total" id="js-total">0 items left</span>
+      </div>
+      <div class="col-1-2">
+        <ul class="filter" id="js-filters">
+          <li><a href="#/all" class="button selected">All</a></li>
+          <li><a href="#/active" class="button">Active</a></li>
+          <li><a href="#/completed" class="button">Completed</a></li>
+        </ul>
+      </div>
+      <div class="col-1-4">
+        <button class="button button--clear" id="js-clear-completed">Clear Completed</button>
+      </div>
+    </div>
+    <div class="row">
+      <ul class="list" id="js-list"></ul>
+    </div>
+  </div>
+  <script src="js/helpers.js"></script>
+  <script src="js/stores.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
