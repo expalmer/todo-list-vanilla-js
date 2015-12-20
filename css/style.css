@@ -13,7 +13,7 @@ body {
   font-size: 100%;
   font-family: 'Roboto Slab', serif;
   color: #fff;
-  background: linear-gradient(to right, #26232C 0%,#26232C 40%,#26232C 100%);
+  background: #26232C;
 }
 
 ::-webkit-input-placeholder {
@@ -35,7 +35,6 @@ a {
 .limiter {
   margin: 20px auto;
   max-width: 600px;
-  background: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -338,4 +337,15 @@ a {
 
 .editing .todo {
   visibility: hidden;
+}
+
+.footer {
+  color: #49405A;
+  margin-top: 100px;
+  text-align: center;
+  font-size: 13px;
+}
+.footer a {
+  font-weight: 700;
+  color: #69607A;
 }
