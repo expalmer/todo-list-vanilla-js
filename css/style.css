@@ -35,7 +35,7 @@ a {
 .limiter {
   margin: 20px auto;
   max-width: 600px;
-  background: #fff;
+  background: #8cbdc5;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -68,7 +68,7 @@ a {
   padding: 30px;
   border-top: solid 1px #3B3841;
   overflow: hidden;
-  background: #322F39;
+  background: #8cbdc5;
 }
 
 #js-insert {
@@ -81,8 +81,8 @@ a {
   outline: none;
   font-size: 23px;
   font-family: inherit;
-  color: #fff;
-  background: #322F39;
+  color:black;
+  background: #8cbdc5;
 }
 
 #js-toggle-all {
@@ -138,7 +138,7 @@ a {
 
 .button.selected {
   color: #fff;
-  background: #6C6777;
+   background: #149f00;
   border: solid 1px #6C6777;
 }
 
@@ -154,10 +154,13 @@ a {
   border: solid 1px #EE1630;
 }
 
-
-.list {
-  position: relative;
-  background: #25222B;
+.list{
+  background-color:#f8bf9b;
+  position:relative;
+}
+.list:nth-child(2n){
+     position: relative;
+     background-color:#f37e9b;
 }
 
 .list:before {
@@ -177,6 +180,7 @@ a {
   border-bottom: solid 1px #2C2933;
   list-style: none;
   overflow: hidden;
+  color:black;
 }
 
 .list li:hover .destroy {
@@ -192,7 +196,7 @@ a {
 
 .completed .todo span {
   text-decoration: line-through;
-  color: #3C3647;
+  color:#a19a9ae0;
 }
 
 .toggle {
