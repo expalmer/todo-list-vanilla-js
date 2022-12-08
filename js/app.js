@@ -6,7 +6,7 @@
   var ESC_KEY = 27;
 
   function App( localStorageKey ) {
-
+    
     this.stores = new Stores(localStorageKey);
     this.currentId = 0;
     this.$insert = $('#js-insert');
@@ -54,7 +54,7 @@
 
   App.fn.onEditingCancel = function(event) {
     if( event.keyCode === ESC_KEY ) {
-      console.log('onEditingCancel', event.target);
+      // console.log('onEditingCancel', event.target);
       event.target.dataset.isCanceled = true;
       event.target.blur();
     }
@@ -67,15 +67,24 @@
   };
 
   App.fn.onEditingLeave = function(event) {
-    console.log('onEditingLeave');
+    // console.log('onEditingLeave');
     var input = event.target;
     var id = this.getItemId( input );
     var text = input.value.trim();
     var li = this.getElementByDataId( id );
+
+    var currentdate = new Date().toString();
+    var datetime = "Last edited on: " + currentdate.substring(0,25);
+    var div = li.firstChild;
+
+    if(input.value !== div.firstChild.nextSibling.innerHTML)
+    div.setAttribute('title', datetime);
+
     if( input.value.trim() ) {
       var item = {
         id: id,
-        text: text
+        text: text,
+        datetime:datetime,
       };
       this.stores.save(item,this.endEditing.bind(this, li, text));
     } else {
@@ -90,6 +99,8 @@
   App.fn.endEditing = function( li, text ) {
     li.className = li.className.replace('editing', '');
     $('.edit', li).removeAttribute('data-is-canceled');
+
+    
     if( text ) {
       $('span', li).innerHTML = text;
     }
@@ -107,8 +118,10 @@
   App.fn.onInsert = function( event ) {
     var element = event.target;
     var text = element.value.trim();
+    var currentdate = new Date().toString();
+    var datetime = "Created on: " + currentdate.substring(0,25);
     if( text && event.keyCode === ENTER_KEY ) {
-      this.insert(text);
+      this.insert(text, datetime);
       element.value = '';
     }
   };
@@ -165,10 +178,11 @@
   };
 
   // Insert
-  App.fn.insert = function( text ) {
+  App.fn.insert = function( text, datetime ) {
     var item = {
       text: text,
-      completed: false
+      completed: false,
+      datetime : datetime
     };
     this.stores.save(item, function( item ) {
       var element = this.nodeItem( item );
@@ -181,7 +195,10 @@
   App.fn.destroy = function( id ) {
     this.stores.destroy( id, function() {
       var li = this.getElementByDataId( id );
-      this.$list.removeChild(li);
+      try {
+        this.$list.removeChild(li);
+      }
+      catch(err) {}
       this.showControls();
     }.bind(this));
   };
@@ -300,6 +317,7 @@
     div.appendChild(toggle);
     div.appendChild(span);
     div.appendChild(destroy);
+    div.setAttribute('title', item.datetime);
 
     li.appendChild(div);
     li.appendChild(edit);
